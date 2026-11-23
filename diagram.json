@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Parking Assist",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 0, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "sonar", "top": -110, "left": 40, "attrs": { "distance": "150" } },
+    { "type": "wokwi-led", "id": "ledG", "top": -60, "left": 330, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "ledY", "top": -60, "left": 380, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "ledR", "top": -60, "left": 430, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "rG", "top": 20, "left": 310, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "rY", "top": 20, "left": 360, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "rR", "top": 20, "left": 410, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": -80, "left": 500, "attrs": { "volume": "0.2" } },
+    { "type": "wokwi-pushbutton", "id": "btn", "top": 60, "left": 500, "attrs": { "color": "blue", "label": "MUTE" } }
+  ],
+  "connections": [
+    [ "uno:5V", "sonar:VCC", "red", [] ],
+    [ "uno:GND.1", "sonar:GND", "black", [] ],
+    [ "uno:9", "sonar:TRIG", "orange", [] ],
+    [ "uno:10", "sonar:ECHO", "purple", [] ],
+
+    [ "uno:4", "rG:1", "green", [] ],
+    [ "rG:2", "ledG:A", "green", [] ],
+    [ "uno:5", "rY:1", "gold", [] ],
+    [ "rY:2", "ledY:A", "gold", [] ],
+    [ "uno:6", "rR:1", "red", [] ],
+    [ "rR:2", "ledR:A", "red", [] ],
+    [ "ledG:C", "uno:GND.2", "black", [] ],
+    [ "ledY:C", "uno:GND.2", "black", [] ],
+    [ "ledR:C", "uno:GND.2", "black", [] ],
+
+    [ "uno:8", "buzzer:2", "blue", [] ],
+    [ "buzzer:1", "uno:GND.3", "black", [] ],
+
+    [ "uno:2", "btn:1.l", "cyan", [] ],
+    [ "btn:2.l", "uno:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}
